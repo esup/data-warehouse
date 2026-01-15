@@ -1,0 +1,51 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Scala and IntelliJ IDEA
+*.class
+*.log
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+# Eclipse
+.settings/
+.project
+.classpath
+.cache
+.worksheet
+
+# VS Code
+.vscode/
+
+# Metals (Scala Language Server)
+.metals/
+.bloop/
+metals.sbt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Temporary files
+*.swp
+*.swo
+*~
+.tmp/
