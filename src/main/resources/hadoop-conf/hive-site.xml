@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    SECURITY NOTE: This configuration file contains hardcoded credentials for development purposes.
+    For production use:
+    1. Use environment variables: ${env.HIVE_DB_PASSWORD}
+    2. Use Hadoop Credential Provider API
+    3. Use external secret management systems (HashiCorp Vault, AWS Secrets Manager, etc.)
+    4. Ensure file permissions are restricted (chmod 600)
+-->
 <configuration>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
@@ -15,6 +23,7 @@
     <property>
         <name>javax.jdo.option.ConnectionPassword</name>
         <value>hive@123</value>
+        <!-- SECURITY WARNING: Hardcoded password - replace with secure credential management in production -->
     </property>
     <property>
         <name>hive.metastore.warehouse.dir</name>

@@ -245,6 +245,48 @@ All configuration files are located in `src/main/resources/`:
    - Configure `spark.yarn.keytab` and `spark.yarn.principal`
    - Add Kerberos configuration to resources
 
+## Security Considerations
+
+### Credential Management
+
+**⚠️ IMPORTANT**: The configuration files in this repository contain hardcoded credentials for development purposes only.
+
+For **production deployments**, you MUST implement secure credential management:
+
+1. **Environment Variables**:
+   ```xml
+   <property>
+     <name>javax.jdo.option.ConnectionPassword</name>
+     <value>${env.HIVE_DB_PASSWORD}</value>
+   </property>
+   ```
+
+2. **Hadoop Credential Provider**:
+   ```bash
+   hadoop credential create javax.jdo.option.ConnectionPassword \
+     -provider jceks://hdfs/user/hive/hive.jceks
+   ```
+
+3. **External Secret Management**:
+   - HashiCorp Vault
+   - AWS Secrets Manager
+   - Azure Key Vault
+   - Kubernetes Secrets
+
+4. **File Permissions**:
+   ```bash
+   chmod 600 src/main/resources/hadoop-conf/hive-site.xml
+   ```
+
+### Security Best Practices
+
+- Never commit production credentials to version control
+- Rotate credentials regularly
+- Use SSL/TLS for database connections in production
+- Enable Kerberos authentication for Hadoop clusters
+- Implement network segmentation and firewall rules
+- Audit access to configuration files and credentials
+
 ## License
 
 This project is for internal use in the data warehouse development environment.
